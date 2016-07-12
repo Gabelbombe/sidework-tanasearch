@@ -19,6 +19,6 @@ if (file_exists($config))
     });
 
     $app->run();
-} else { die('Failed to locate config...'); }
+} else { Throw New \RuntimeException('Failed to locate config...'); }
 
 
