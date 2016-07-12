@@ -11,6 +11,14 @@ if (file_exists($config))
         'settings' => json_decode(file_get_contents($config), 1) ## requires array =/
     ]);
 
+    $app->get('/', function (Request $request, Response $response)
+    {
+        $name = $request->getAttribute('name');
+        $response->getBody()->write("Hello, $name");
+        return $response;
+    });
+
+
     $app->get('/hello/{name}', function (Request $request, Response $response)
     {
         $name = $request->getAttribute('name');

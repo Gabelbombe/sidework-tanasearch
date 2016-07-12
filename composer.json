@@ -1,6 +1,7 @@
 {
     "require": {
         "slim/slim": "^3.0",
-        "jeremykendall/slim-auth": "^1.0"
+        "jeremykendall/slim-auth": "^1.0",
+        "slim/php-view": "^2.1"
     }
 }
