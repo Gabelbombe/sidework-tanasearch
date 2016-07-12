@@ -15,7 +15,7 @@
     },
     "autoload": {
         "psr-0": {
-            "Datsun": "tana/"
+            "Datsun": "datsun/"
         },
         "classmap": [
           "src/app/models",
