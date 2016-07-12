@@ -1,7 +1,38 @@
 {
+    "name": "ehime/sidework-tanasearch",
+    "description": "Datsun search and logging for parts.",
+    "keywords": [
+        "search",
+        "slim"
+    ],
+    "license": "MIT",
+    "type": "project",
     "require": {
         "slim/slim": "^3.0",
         "jeremykendall/slim-auth": "^1.0",
-        "slim/php-view": "^2.1"
-    }
+        "slim/php-view": "^2.1",
+        "monolog/monolog": "^1.20"
+    },
+    "autoload": {
+        "psr-0": {
+            "Datsun": "tana/"
+        },
+        "classmap": [
+            "app/model",
+            "app/controller",
+            "app/view",
+            "app/database/migrations",
+            "app/database/seeds",
+            "app/test/TestCase.php"
+        ]
+    },
+    "scripts": {
+        "post-install-cmd": [],
+        "post-update-cmd": [],
+        "post-create-project-cmd": []
+    },
+    "config": {
+        "preferred-install": "dist"
+    },
+    "minimum-stability": "stable"
 }
