@@ -13,6 +13,8 @@ if (file_exists($config))
         'settings' => json_decode(file_get_contents($config), 1) ## requires array =/
     ]);
 
+    ## // begin containers
+
     $container = $app->getContainer();
     $container['logger'] = function($c)
     {
@@ -32,17 +34,48 @@ if (file_exists($config))
         return $pdo;
     };
 
+    ## // end containers
+
     $app->get('/', function (Request $request, Response $response)
     {
-        $response->getBody()->write("Route slash hit"); ## basic db test
-
         $mapper = New \Models\ConnectionMapper($this->db);
+        $blob   = json_encode($mapper->fetch(), \JSON_PRETTY_PRINT);
 
-        $this->logger->addInfo("[info] Testing connection: " . json_encode($mapper->fetch()));
+        $this->logger->addInfo("[info] Testing connection: $blob");
 
-        return $response;
+        $response->getBody()->write("
+            Route received...
+            Database connection: ok
+            Received: $blob"
+        ); ## basic db test
+
+        $plainHeader = $response->withHeader('Content-type', 'text/plain');
+        return $plainHeader;
     });
+/*
+    $app->get('/login', function (Request $request, Response $response)
+    {
 
+        $username = null;
+
+        if ($app->request()->isPost()) {
+            $username = $app->request->post('username');
+            $password = $app->request->post('password');
+
+            $result = $app->authenticator->authenticate($username, $password);
+
+            if ($result->isValid()) {
+                $app->redirect('/');
+            } else {
+                $messages = $result->getMessages();
+                $app->flashNow('error', $messages[0]);
+            }
+        }
+
+        $app->render('login.twig', array('username' => $username));
+
+    })->via('GET', 'POST')->name('login');
+*/
     $app->run();
 } else { Throw New \RuntimeException('Failed to locate config...'); }
 
