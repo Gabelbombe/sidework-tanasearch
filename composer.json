@@ -27,7 +27,9 @@
         ]
     },
     "scripts": {
-        "post-install-cmd": [],
+        "post-install-cmd": [
+          "mkdir -p src/app/{model,controller,view,database/{migrations,seeds},test}"
+        ],
         "post-update-cmd": [],
         "post-create-project-cmd": []
     },

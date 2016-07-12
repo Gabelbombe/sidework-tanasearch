@@ -1,8 +1,10 @@
 <?php
+chdir(dirname(__DIR__));
+require 'vendor/autoload.php';
+
 USE \Psr\Http\Message\ServerRequestInterface    AS Request;
 USE \Psr\Http\Message\ResponseInterface         AS Response;
 
-require dirname(__DIR__). '/vendor/autoload.php';
 $config = '/home/ubuntu/config.json';
 
 if (file_exists($config))
