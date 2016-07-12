@@ -18,12 +18,12 @@
             "Datsun": "tana/"
         },
         "classmap": [
-            "src/app/models",
-            "src/app/controllers",
-            "src/app/views",
-            "src/app/database/migrations",
-            "src/app/database/seeds",
-            "src/app/tests/"
+          "src/app/models",
+          "src/app/controllers",
+          "src/app/views",
+          "src/app/database/migrations",
+          "src/app/database/seeds",
+          "src/app/tests/TestCase.php"
         ]
     },
     "scripts": {
